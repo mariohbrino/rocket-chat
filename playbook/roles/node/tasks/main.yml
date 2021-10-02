@@ -1,0 +1,28 @@
+---
+- name: "Add nodejs apt key"
+  apt_key:
+    url: "https://deb.nodesource.com/gpgkey/nodesource.gpg.key"
+    state: present
+
+- name: "Add nodejs ppa"
+  apt_repository:
+    repo: "deb https://deb.nodesource.com/node_12.x bionic main"
+    update_cache: yes
+
+- name: "Install nodejs"
+  apt:
+    pkg: nodejs
+    state: present
+    force: yes
+
+- name: "Install npm modules"
+  npm:
+    name: "{{ item }}"
+    global: yes
+    state: latest
+  with_items:
+    - "inherits"
+    - "n"
+
+- name: "Install node version required by rocket chat"
+  command: "n 12.18.4"

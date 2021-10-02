@@ -1,0 +1,9 @@
+---
+- name: "Install common dependencies"
+  apt:
+    pkg:
+      - build-essential
+      - graphicsmagick
+    state: present
+    force: yes
+    update_cache: true

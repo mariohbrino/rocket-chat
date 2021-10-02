@@ -1,0 +1,35 @@
+---
+- name: "Add mongodb apt key"
+  apt_key:
+    keyserver: "hkp://keyserver.ubuntu.com:80"
+    id: 9DA31620334BD75D9DCB49F368818C72E52529D4
+    state: present
+
+- name: "Add mongodb ppa"
+  apt_repository:
+    repo: "deb [ arch=amd64 ] https://repo.mongodb.org/apt/ubuntu bionic/mongodb-org/4.0 multiverse"
+    update_cache: yes
+
+- name: "Install mongodb server"
+  package:
+    name: mongodb-org
+    state: present
+    force: yes
+
+- name: "Setup storage engine"
+  replace:
+    path: /etc/mongod.conf
+    regexp: "^#  engine:$"
+    replace: "  engine: mmapv1"
+
+- name: "Setup replication"
+  replace:
+    path: /etc/mongod.conf
+    regexp: "^#replication:$"
+    replace: "replication:\n  replSetName: rs01"
+
+- name: "Start and enable mongodb"
+  service:
+    name: mongod
+    state: started
+    enabled: yes
