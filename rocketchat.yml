@@ -1,6 +1,6 @@
 ---
 - name: "Deploy rocketchat server"
-  hosts: all
+  hosts: rocketchat
   roles:
     - { role: common,       tags: common      }
     - { role: node,         tags: node        }

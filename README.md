@@ -12,9 +12,9 @@ Rocket.Chat does everything other platforms do, except exposing your data.
 
 ## Initial settings
 
-Define the variables on `inventory/rocketchat.yml` as per your needs
+Define the variables on `inventory.yml` as per your needs
 
-Change variables on `inventory/rocketchat.yml`
+Change variables on `inventory.yml`
 ```bash
 ansible_host: '<hostname>'
 username: '<username>'
@@ -40,7 +40,7 @@ sudo apt -y install ansible
 
 Change ssh-key permissions
 ```bash
-chmod 400 ~/.ssh/<ssh_key>
+chmod 400 ~/.ssh/<ssh-key>
 ```
 
 Configure ssh config file
@@ -52,17 +52,17 @@ chmod 600 ~/.ssh/config
 SSH config file sample
 ```bash
 Host alias
-  HostName <ip_address>
+  HostName <ip-address>
   User <username>
   Port 22
-  IdentityFile ~/.ssh/<ssh_key>
+  IdentityFile ~/.ssh/<ssh-key>
 ```
 
 ## Usage and information
 
 Install rocketchat on ubuntu server 20.04, add **flag** `-K` in case the user has a password
 ```bash
-ansible-playbook -i inventory/rocketchat.yml playbook/rocketchat.yml
+ansible-playbook -i inventory.yml rocketchat.yml
 ```
 
 > Access rocketchat [localhost:3000](http://localhost:3000) or hostname:3000<br>
@@ -74,14 +74,14 @@ Using tags helps to define which roles will be selected or skipped
 
 Run only tags with tags `node` and `rocketchat`
 ```bash
-ansible-playbook -i inventory/rocketchat.yml playbook/rocketchat.yml --tags "node,rocketchat"
+ansible-playbook -i inventory.yml rocketchat.yml --tags "node,rocketchat"
 ```
 
 Run all tasks except those with the tags `common` and `mongodb`
 ```bash
-ansible-playbook -i inventory/rocketchat.yml playbook/rocketchat.yml --skip-tags "common,mongodb"
+ansible-playbook -i inventory.yml rocketchat.yml --skip-tags "common,mongodb"
 ```
 
 ## License
 
-[MIT license](http://opensource.org/licenses/MIT).
+[MIT license](http://opensource.org/licenses/MIT)
