@@ -1,7 +1,6 @@
 # Rocket.Chat
 
-Real-time conversations with your colleagues, other companies or customers.
-
+Real-time conversations with your colleagues, other companies or customers.<br>
 Rocket.Chat does everything other platforms do, except exposing your data.
 
 [Documentation](https://docs.rocket.chat/installing-and-updating/manual-installation/ubuntu)
@@ -57,7 +56,6 @@ Host alias
   User <username>
   Port 22
   IdentityFile ~/.ssh/<ssh_key>
-
 ```
 
 ## Usage and information
@@ -67,8 +65,7 @@ Install rocketchat on ubuntu server 20.04, add **flag** `-K` in case the user ha
 ansible-playbook -i inventory/rocketchat.yml playbook/rocketchat.yml
 ```
 
-> Access rocketchat http:\\localhost:3000 or <hostname>:3000
-
+> Access rocketchat [localhost:3000](http://localhost:3000) or hostname:3000<br>
 > It may take a few seconds or minutes to load
 
 ### Tags
@@ -76,13 +73,11 @@ ansible-playbook -i inventory/rocketchat.yml playbook/rocketchat.yml
 Using tags helps to define which roles will be selected or skipped
 
 Run only tags with tags `node` and `rocketchat`
-
 ```bash
 ansible-playbook -i inventory/rocketchat.yml playbook/rocketchat.yml --tags "node,rocketchat"
 ```
 
 Run all tasks except those with the tags `common` and `mongodb`
-
 ```bash
 ansible-playbook -i inventory/rocketchat.yml playbook/rocketchat.yml --skip-tags "common,mongodb"
 ```
