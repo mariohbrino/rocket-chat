@@ -18,6 +18,7 @@ Change variables on `inventory.yml`
 ```bash
 ansible_host: '<hostname>'
 username: '<username>'
+domain_name: '<domain-name>'
 ```
 
 Ansible connection can be set as `local` or `ssh`

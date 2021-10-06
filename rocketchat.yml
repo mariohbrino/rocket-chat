@@ -5,4 +5,5 @@
     - { role: common,       tags: common      }
     - { role: node,         tags: node        }
     - { role: mongodb,      tags: mongodb     }
+    - { role: nginx,        tags: nginx       }
     - { role: rocketchat,   tags: rocketchat  }

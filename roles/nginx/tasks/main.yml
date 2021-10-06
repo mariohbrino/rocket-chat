@@ -1,0 +1,39 @@
+---
+- name: "Install nginx"
+  apt:
+    pkg:
+      - nginx
+    force: yes
+    state: present
+    update_cache: yes
+
+- name: "Disable default config"
+  file:
+    dest: /etc/nginx/sites-enabled/default
+    state: absent
+
+- name: "Ensures {{ domain_name }} directory exists"
+  file:
+    path: "/home/{{ username }}/{{ domain_name }}"
+    owner: "{{ username }}"
+    group: "{{ username }}"
+    state: directory
+
+- name: "Copy nginx config"
+  template:
+    src: files/nginx.conf
+    dest: "/home/{{ username }}/{{ domain_name }}/nginx.conf"
+    owner: "{{ username }}"
+    group: "{{ username }}"
+
+- name: "Create link of nginx config"
+  file:
+    src: "/home/{{ username }}/{{ domain_name }}/nginx.conf"
+    dest: "/etc/nginx/sites-enabled/{{ domain_name }}.conf"
+    state: link
+
+- name: "Restart and enable nginx"
+  service:
+    name: nginx
+    state: restarted
+    enabled: yes

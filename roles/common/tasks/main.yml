@@ -6,4 +6,4 @@
       - graphicsmagick
     state: present
     force: yes
-    update_cache: true
+    update_cache: yes
